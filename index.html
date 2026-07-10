@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Seat</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#F8F6F3;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    color:#333;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    max-width:500px;
+    width:100%;
+    padding:50px 40px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:35px;
+    line-height:1.5;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    font-size:16px;
+    outline:none;
+    transition:.2s;
+}
+
+input:focus{
+    border-color:#8C6B7E;
+}
+
+.result{
+    margin-top:30px;
+    display:none;
+}
+
+.name{
+    font-size:24px;
+    font-weight:600;
+}
+
+.table{
+    font-size:42px;
+    font-family:'Cormorant Garamond',serif;
+    color:#8C6B7E;
+    margin-top:10px;
+}
+
+.notfound{
+    color:#c0392b;
+    margin-top:25px;
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Find Your Seat</h1>
+
+<p class="subtitle">
+Type your first or last name below to find your table.
+</p>
+
+<input
+type="text"
+id="search"
+placeholder="Start typing your name..."
+autocomplete="off">
+
+<div class="result" id="result">
+<div class="name" id="guestName"></div>
+<div class="table" id="tableNumber"></div>
+</div>
+
+<div class="notfound" id="notfound">
+We couldn't find that name.
+</div>
+
+</div>
+
+<script>
+
+const guests = [
+{name:"Lorilyn Reyes",table:"Table 1"},
+{name:"Cerilo Reyes",table:"Table 1"},
+{name:"Lekisha Duenas",table:"Table 1"},
+{name:"Michael San Nicolas",table:"Table 1"},
+{name:"Marlina Guzman",table:"Table 1"},
+{name:"CJ Augustin",table:"Table 1"},
+{name:"Aleiah Taijeron",table:"Table 1"},
+{name:"Shemiah Cruz",table:"Table 1"},
+{name:"Kalson Dohrres",table:"Table 1"},
+{name:"Andrew Dela Rosa",table:"Table 1"},
+
+{name:"Gemma Labanza",table:"Table 2"},
+{name:"Roberto Labanza",table:"Table 2"},
+{name:"Remy Ordonez",table:"Table 2"},
+{name:"Juan Ordonez",table:"Table 2"},
+{name:"Yolly Ordonez",table:"Table 2"},
+
+{name:"Calvin Reyes",table:"Table 3"},
+{name:"Ashley Reyes",table:"Table 3"},
+{name:"Chris Nauta",table:"Table 3"},
+{name:"Bianka Nauta",table:"Table 3"},
+{name:"Michael Reyes",table:"Table 3"},
+{name:"Annabelle Reyes",table:"Table 3"},
+{name:"Michael Jr. Reyes",table:"Table 3"},
+{name:"Cerilo Reyes (Senior)",table:"Table 3"},
+{name:"Adelina Reyes",table:"Table 3"},
+
+{name:"James Labanza",table:"Table 4"},
+{name:"Jeffrey Labanza",table:"Table 4"},
+{name:"Kanani Gunobgunob",table:"Table 4"},
+{name:"Renz Ordonez",table:"Table 4"},
+{name:"Ryan Ordonez",table:"Table 4"},
+{name:"Ciuss Mostales",table:"Table 4"},
+
+{name:"Victor Nauta",table:"Table 5"},
+{name:"Jerome Guavarra",table:"Table 5"},
+{name:"Novelle Rosello",table:"Table 5"},
+{name:"Guest",table:"Table 5"},
+{name:"Calvin Contreras",table:"Table 5"},
+{name:"Catrina Contreras",table:"Table 5"},
+{name:"Brei Hays-Castro",table:"Table 5"},
+{name:"Cy Contreras",table:"Table 5"},
+{name:"Christian Riddle",table:"Table 5"},
+{name:"Sherlyn Riddle",table:"Table 5"},
+
+{name:"Joann Ordonez",table:"Table 6"},
+{name:"Ernesto Ordonez",table:"Table 6"},
+{name:"JR Ordonez",table:"Table 6"},
+{name:"Vina Ordonez",table:"Table 6"},
+{name:"Sky Ordonez",table:"Table 6"},
+{name:"AJ Ordonez",table:"Table 6"},
+{name:"Aileen De Dios",table:"Table 6"},
+{name:"Ruben Montalvo",table:"Table 6"},
+{name:"Glenn Romero",table:"Table 6"},
+{name:"Rowena Romero",table:"Table 6"},
+{name:"Nelson Romero",table:"Table 6"},
+
+{name:"Journey Beltran",table:"Table 7"},
+{name:"Rochell Beltran",table:"Table 7"},
+{name:"Rose Manibusan",table:"Table 7"},
+{name:"Frank Cruz",table:"Table 7"},
+{name:"Erika Cruz",table:"Table 7"},
+{name:"Leslie Kimball",table:"Table 7"},
+{name:"Dan Kimball",table:"Table 7"},
+{name:"Von Burrell",table:"Table 7"},
+{name:"Laira Burrell",table:"Table 7"},
+
+{name:"Casey Santos",table:"Table 8"},
+{name:"Ray Santos",table:"Table 8"},
+{name:"Mikayla Castro",table:"Table 8"},
+{name:"Drake Guzman",table:"Table 8"},
+{name:"Edrianna Lorenza",table:"Table 8"},
+{name:"Keyana Rivera",table:"Table 8"},
+{name:"Skylerblu Kakas",table:"Table 8"},
+{name:"Quintin Kakas",table:"Table 8"},
+{name:"Momilani Macagba",table:"Table 8"},
+{name:"Ronalyn Macagba",table:"Table 8"},
+
+{name:"Elijah Nguyen",table:"Table 9"},
+{name:"James Montoya",table:"Table 9"},
+{name:"JoeJohn Ada",table:"Table 9"},
+{name:"Russell Borja",table:"Table 9"},
+{name:"Nicole Vitug",table:"Table 9"},
+{name:"Christopher Cruz",table:"Table 9"},
+{name:"Crystallan Bunoan",table:"Table 9"},
+{name:"Brandon Fujikawa",table:"Table 9"},
+{name:"Isa Gagarin",table:"Table 9"},
+
+{name:"Pauline Perez",table:"Table 10"},
+{name:"Caleb Dixon",table:"Table 10"},
+{name:"Adam Pangelinan",table:"Table 10"},
+{name:"Franshay Pangelinan",table:"Table 10"},
+{name:"Rea Dimag",table:"Table 10"},
+{name:"Aubrey Buentipo",table:"Table 10"},
+{name:"Galen Cepeda",table:"Table 10"},
+{name:"Toni Mae Aguon",table:"Table 10"},
+
+{name:"Jaythan Lujan",table:"Table 11"},
+{name:"Jaslynn Petros",table:"Table 11"},
+{name:"Jon Esteves",table:"Table 11"},
+{name:"Nichole Lujan",table:"Table 11"},
+{name:"Vincent Mina",table:"Table 11"},
+{name:"Krystal Ramos",table:"Table 11"},
+
+{name:"Jeff Bonifacio",table:"Table 12"},
+{name:"Linlyn Ilog",table:"Table 12"},
+{name:"Jacque Hogon",table:"Table 12"},
+{name:"Pascale Bartlett",table:"Table 12"},
+{name:"Dan Bartlett",table:"Table 12"},
+{name:"Suzanne Aquino",table:"Table 12"},
+{name:"Kim Resurreccion",table:"Table 12"},
+{name:"Alvin Resurreccion",table:"Table 12"},
+{name:"Trisha Sherry",table:"Table 12"},
+{name:"Sheryl De Guzman",table:"Table 12"},
+{name:"Paul Rivera",table:"Table 12"}
+
+];
+
+const input=document.getElementById("search");
+const result=document.getElementById("result");
+const guestName=document.getElementById("guestName");
+const tableNumber=document.getElementById("tableNumber");
+const notfound=document.getElementById("notfound");
+
+input.addEventListener("input",function(){
+
+const value=this.value.toLowerCase().trim();
+
+if(value===""){
+result.style.display="none";
+notfound.style.display="none";
+return;
+}
+
+const guest=guests.find(g=>g.name.toLowerCase().includes(value));
+
+if(guest){
+
+guestName.textContent=guest.name;
+tableNumber.textContent=guest.table;
+
+result.style.display="block";
+notfound.style.display="none";
+
+}else{
+
+result.style.display="none";
+notfound.style.display="block";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
