@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kimberly & Cody | Find Your Seat</title>
+<title>Kim & Cody | Find Your Seat</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +89,7 @@ animation:fade 1s ease;
 
 .script{
 
-font-family:Parisienne,cursive;
+font-family:Eyesome Script;
 
 font-size:48px;
 
@@ -101,7 +101,7 @@ margin-bottom:8px;
 
 .title{
 
-font-family:"Cormorant Garamond",serif;
+font-family:"Le Jour Serif",serif;
 
 font-size:48px;
 
@@ -171,7 +171,7 @@ margin-bottom:10px;
 
 .table{
 
-font-family:"Cormorant Garamond",serif;
+font-family:"Le Jour Serif",serif;
 
 font-size:56px;
 
@@ -284,7 +284,7 @@ font-size:42px;
 <div class="card">
 
 <div class="script">
-Kimberly & Cody
+Kim & Cody
 </div>
 
 <div class="title">
@@ -292,7 +292,7 @@ Find Your Seat
 </div>
 
 <p class="subtitle">
-We're so happy you're here.<br>
+We're so happy you're here!<br>
 Search your first name, last name, or full name below.
 </p>
 
@@ -307,7 +307,7 @@ placeholder="🔍 Search your name">
 <div class="table" id="guestTable"></div>
 
 <div class="with">
-You'll be celebrating with
+You'll be celebrating with...
 </div>
 
 <ul id="tableGuests"></ul>
@@ -324,7 +324,7 @@ Please try your first or last name.
 
 <div class="footer">
 
-August 2026 • We can't wait to celebrate with you ♡
+August 23, 2026 
 
 </div>
 
@@ -346,9 +346,14 @@ const guests = [
 
 {name:"Gemma Labanza",table:2},
 {name:"Roberto Labanza",table:2},
+{name:"Rolando Labanza",table:2},
+{name:"Florida Labanza",table:2},
 {name:"Remy Ordonez",table:2},
 {name:"Juan Ordonez",table:2},
+{name:"Ernesto Ordonez",table:2},
 {name:"Yolly Ordonez",table:2},
+{name:"Marivic Navarette",table:2},
+{name:"Napoleon Navarette",table:2},
 
 {name:"Calvin Reyes",table:3},
 {name:"Ashley Reyes",table:3},
@@ -363,6 +368,10 @@ const guests = [
 {name:"James Labanza",table:4},
 {name:"Jeffrey Labanza",table:4},
 {name:"Kanani Gunobgunob",table:4},
+{name:"Kenn Navarette",table:4},
+{name:"Matt Navarette",table:4},
+{name:"Jordan Navarette",table:4},
+{name:"Jacob Navarette",table:4},
 {name:"Renz Ordonez",table:4},
 {name:"Ryan Ordonez",table:4},
 {name:"Ciuss Mostales",table:4},
@@ -379,8 +388,7 @@ const guests = [
 {name:"Sherlyn Riddle",table:5},
 
 {name:"Joann Ordonez",table:6},
-{name:"Ernesto Ordonez",table:6},
-{name:"JR Ordonez",table:6},
+{name:"Ernesto Ordonez JR.",table:6},
 {name:"Vina Ordonez",table:6},
 {name:"Sky Ordonez",table:6},
 {name:"AJ Ordonez",table:6},
@@ -429,6 +437,8 @@ const guests = [
 {name:"Aubrey Buentipo",table:10},
 {name:"Galen Cepeda",table:10},
 {name:"Toni Mae Aguon",table:10},
+{name:"Jeff Bonifacio",table:10},
+{name:"Linlyn Ilog",table:10}
 
 {name:"Jaythan Lujan",table:11},
 {name:"Jaslynn Petros",table:11},
@@ -437,8 +447,6 @@ const guests = [
 {name:"Vincent Mina",table:11},
 {name:"Krystal Ramos",table:11},
 
-{name:"Jeff Bonifacio",table:12},
-{name:"Linlyn Ilog",table:12},
 {name:"Jacque Hogon",table:12},
 {name:"Pascale Bartlett",table:12},
 {name:"Dan Bartlett",table:12},
@@ -491,9 +499,9 @@ search.addEventListener("input", () => {
             const li = document.createElement("li");
 
             if(person.name === guest.name){
-                li.innerHTML = `🤍 <strong>${person.name}</strong>`;
+                li.innerHTML = `● <strong>${person.name}</strong>`;
             }else{
-                li.innerHTML = `♡ ${person.name}`;
+                li.innerHTML = `○ ${person.name}`;
             }
 
             tableGuests.appendChild(li);
