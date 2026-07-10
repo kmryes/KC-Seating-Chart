@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,7 +11,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Ballet&family=Bodoni+Moda:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">    
+<link href="https://fonts.googleapis.com/css2?family=Ballet&family=Bodoni+Moda:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
 <style>
 
 *{
@@ -19,6 +22,7 @@ padding:0;
 box-sizing:border-box;
 }
 
+
 body{
 
 background:#F8F6F3;
@@ -26,7 +30,9 @@ background:#F8F6F3;
 font-family:"Inter", sans-serif;
 
 display:flex;
+
 justify-content:center;
+
 align-items:center;
 
 min-height:100vh;
@@ -64,6 +70,7 @@ z-index:-1;
 }
 
 
+/* CARD */
 
 .card{
 
@@ -86,23 +93,36 @@ animation:fade 1s ease;
 }
 
 
-.script span{
-font-size:32px;
-vertical-align:middle;
-}
+/* KC LOGO */
 
 .script{
+
 font-family:"Ballet", cursive;
-font-size:85px;
+
+font-size:65px;
+
 color:#8C6B7E;
-margin-bottom:8px;
+
+margin-bottom:12px;
+
 line-height:1;
-letter-spacing:2px;
+
+letter-spacing:1px;
+
+}
+
+
+.script span{
+
+font-size:.45em;
+
+vertical-align:middle;
+
 }
 
 
 
-/* FIND YOUR SEAT */
+/* TITLE */
 
 .title{
 
@@ -120,6 +140,8 @@ margin-bottom:10px;
 
 
 
+/* DESCRIPTION */
+
 .subtitle{
 
 color:#777;
@@ -131,6 +153,8 @@ margin-bottom:35px;
 }
 
 
+
+/* SEARCH */
 
 input{
 
@@ -151,7 +175,6 @@ transition:.25s;
 }
 
 
-
 input:focus{
 
 border-color:#8C6B7E;
@@ -161,6 +184,8 @@ box-shadow:0 0 0 4px rgba(140,107,126,.12);
 }
 
 
+
+/* RESULT */
 
 .result{
 
@@ -180,7 +205,6 @@ border-top:1px solid #eee;
 animation:seatReveal .6s ease;
 
 }
-
 
 
 @keyframes seatReveal{
@@ -205,6 +229,8 @@ transform:translateY(0) scale(1);
 
 
 
+/* WELCOME */
+
 .welcome{
 
 font-size:22px;
@@ -214,6 +240,8 @@ margin-bottom:10px;
 }
 
 
+
+/* TABLE NUMBER */
 
 .table{
 
@@ -233,6 +261,8 @@ margin:15px 0;
 
 
 
+/* TABLE MEMBERS */
+
 .with{
 
 margin-top:25px;
@@ -244,7 +274,6 @@ font-weight:500;
 }
 
 
-
 ul{
 
 list-style:none;
@@ -254,13 +283,19 @@ padding:0;
 }
 
 
-
 li{
 
-padding:7px;
+padding:8px;
+
+font-family:"Playfair Display", serif;
+
+text-transform:uppercase;
+
+letter-spacing:1px;
+
+font-size:14px;
 
 }
-
 
 
 li:hover{
@@ -268,7 +303,12 @@ li:hover{
 color:#8C6B7E;
 
 }
-    #backButton{
+
+
+
+/* BUTTON */
+
+#backButton{
 
 margin-top:25px;
 
@@ -303,6 +343,8 @@ opacity:.85;
 
 
 
+/* NOT FOUND */
+
 .notfound{
 
 display:none;
@@ -315,6 +357,19 @@ line-height:1.6;
 
 }
 
+
+
+/* FOOTER */
+
+.footer{
+
+margin-top:40px;
+
+font-size:14px;
+
+color:#999;
+
+}
 
 
 .footer span{
@@ -334,6 +389,8 @@ color:#8C6B7E;
 }
 
 
+
+/* ANIMATION */
 
 @keyframes fade{
 
@@ -357,13 +414,30 @@ transform:none;
 
 
 
+/* MOBILE */
+
 @media(max-width:600px){
+
+.card{
+
+padding:35px 25px;
+
+}
+
 
 .script{
 
-font-size:75px;
+font-size:42px;
 
 }
+
+
+.script span{
+
+font-size:.45em;
+
+}
+
 
 .title{
 
@@ -371,21 +445,21 @@ font-size:36px;
 
 }
 
+
 .table{
 
 font-size:42px;
 
 }
 
-
 }
+
 
 </style>
 
 </head>
 
-
-<body>
+    <body>
 
 <div class="card">
 
@@ -393,6 +467,7 @@ font-size:42px;
 <div class="script">
 K <span>♡</span> C
 </div>
+
 
 <div class="title">
 Find Your Seat
@@ -433,9 +508,13 @@ You'll be celebrating with...
 
 <ul id="tableGuests"></ul>
 
+
 <button id="backButton">
+
 ← Search Another Guest
+
 </button>
+
 
 </div>
 
@@ -450,17 +529,27 @@ Please try your first or last name.
 </div>
 
 
+
 <div class="footer">
+
+August 23, 2026
 
 <br>
 
-<span>Celebrating Love & Forever</span>
+<span>
+Celebrating Love & Forever
+</span>
 
 </div>
 
 
+
 </div>
+
+
+
 <script>
+
 
 const guests = [
 
@@ -475,6 +564,7 @@ const guests = [
 {name:"Kalson Dohrres",table:1},
 {name:"Andrew Dela Rosa",table:1},
 
+
 {name:"Gemma Labanza",table:2},
 {name:"Roberto Labanza",table:2},
 {name:"Rolando Labanza",table:2},
@@ -486,6 +576,7 @@ const guests = [
 {name:"Marivic Navarette",table:2},
 {name:"Napoleon Navarette",table:2},
 
+
 {name:"Calvin Reyes",table:3},
 {name:"Ashley Reyes",table:3},
 {name:"Chris Nauta",table:3},
@@ -495,6 +586,7 @@ const guests = [
 {name:"Michael Jr. Reyes",table:3},
 {name:"Cerilo Reyes (Senior)",table:3},
 {name:"Adelina Reyes",table:3},
+
 
 {name:"James Labanza",table:4},
 {name:"Jeffrey Labanza",table:4},
@@ -507,6 +599,7 @@ const guests = [
 {name:"Ryan Ordonez",table:4},
 {name:"Ciuss Mostales",table:4},
 
+
 {name:"Victor Nauta",table:5},
 {name:"Jerome Guavarra",table:5},
 {name:"Novelle Rosello",table:5},
@@ -516,6 +609,7 @@ const guests = [
 {name:"Cy Contreras",table:5},
 {name:"Christian Riddle",table:5},
 {name:"Sherlyn Riddle",table:5},
+
 
 {name:"Joann Ordonez",table:6},
 {name:"Ernesto Ordonez JR.",table:6},
@@ -528,6 +622,7 @@ const guests = [
 {name:"Rowena Romero",table:6},
 {name:"Nelson Romero",table:6},
 
+
 {name:"Journey Beltran",table:7},
 {name:"Rochell Beltran",table:7},
 {name:"Rose Manibusan",table:7},
@@ -537,6 +632,7 @@ const guests = [
 {name:"Dan Kimball",table:7},
 {name:"Von Burrell",table:7},
 {name:"Laira Burrell",table:7},
+
 
 {name:"Casey Santos",table:8},
 {name:"Ray Santos",table:8},
@@ -549,6 +645,7 @@ const guests = [
 {name:"Momilani Macagba",table:8},
 {name:"Ronalyn Macagba",table:8},
 
+
 {name:"Elijah Nguyen",table:9},
 {name:"James Montoya",table:9},
 {name:"JoeJohn Ada",table:9},
@@ -558,6 +655,7 @@ const guests = [
 {name:"Crystallan Bunoan",table:9},
 {name:"Brandon Fujikawa",table:9},
 {name:"Isa Gagarin",table:9},
+
 
 {name:"Pauline Perez",table:10},
 {name:"Caleb Dixon",table:10},
@@ -577,6 +675,7 @@ const guests = [
 {name:"Vincent Mina",table:11},
 {name:"Krystal Ramos",table:11},
 
+
 {name:"Jacque Hogon",table:12},
 {name:"Pascale Bartlett",table:12},
 {name:"Dan Bartlett",table:12},
@@ -590,6 +689,7 @@ const guests = [
 ];
 
 
+
 const search = document.getElementById("search");
 
 const result = document.getElementById("result");
@@ -601,6 +701,7 @@ const guestName = document.getElementById("guestName");
 const guestTable = document.getElementById("guestTable");
 
 const tableGuests = document.getElementById("tableGuests");
+
 const backButton = document.getElementById("backButton");
 
 
@@ -660,7 +761,7 @@ matches.forEach(person => {
 const li = document.createElement("li");
 
 
-li.innerHTML = `• ${person.name}`;
+li.textContent = person.name;
 
 
 li.style.cursor = "pointer";
@@ -673,16 +774,15 @@ li.onclick = () => showGuest(person);
 tableGuests.appendChild(li);
 
 
-
 });
 
 
 
-result.style.display = "block";  
+result.style.display = "block";
 
-result.classList.remove("show");  
-    
-void result.offsetWidth; 
+result.classList.remove("show");
+
+void result.offsetWidth;
 
 result.classList.add("show");
 
@@ -697,6 +797,7 @@ showGuest(matches[0]);
 
 
 });
+
 
 
 
@@ -729,13 +830,17 @@ const li = document.createElement("li");
 
 if(person.name === guest.name){
 
-li.innerHTML = ` <strong>${person.name}</strong>`;
+
+li.innerHTML = `<strong>${person.name}</strong>`;
+
 
 }
 
 else{
 
-li.innerHTML = ` ${person.name}`;
+
+li.textContent = person.name;
+
 
 }
 
@@ -744,38 +849,53 @@ li.innerHTML = ` ${person.name}`;
 tableGuests.appendChild(li);
 
 
-
 });
 
 
 
-result.style.display = "block";  
+result.style.display = "block";
 
-result.classList.remove("show");  
 
-void result.offsetWidth;  
-    
+result.classList.remove("show");
+
+void result.offsetWidth;
+
 result.classList.add("show");
 
 
 }
 
+
+
+
+
 backButton.addEventListener("click", ()=>{
+
 
 search.value = "";
 
+
 result.style.display = "none";
+
 
 notfound.style.display = "none";
 
+
 search.focus();
 
+
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
-});
 
 });
+
+
+});
+
+
 
 </script>
 
