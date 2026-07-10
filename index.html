@@ -11,7 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Ballet&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700&family=Ballet&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
 <style>
 
 *{
@@ -221,11 +222,13 @@ margin-bottom:10px;
 
 .table{
 
-font-family:"Cormorant Garamond", serif;
+font-family:"Bodoni Moda", serif;
 
-font-size:56px;
+font-size:72px;
 
-font-weight:600;
+font-weight:500;
+
+letter-spacing:3px;
 
 color:#8C6B7E;
 
@@ -711,7 +714,7 @@ function showGuest(guest){
 guestName.textContent = `Welcome, ${guest.name}!`;
 
 
-guestTable.textContent = `Table ${guest.table}`;
+guestTable.textContent = `TABLE ${guest.table}`;
 
 
 tableGuests.innerHTML = "";
