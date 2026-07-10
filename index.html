@@ -24,12 +24,10 @@ body{
 
 background:#F8F6F3;
 
-font-family:Inter,sans-serif;
+font-family:"Inter", sans-serif;
 
 display:flex;
-
 justify-content:center;
-
 align-items:center;
 
 min-height:100vh;
@@ -41,6 +39,7 @@ color:#2F2B2B;
 overflow-x:hidden;
 
 }
+
 
 body::before{
 
@@ -65,6 +64,8 @@ z-index:-1;
 
 }
 
+
+
 .card{
 
 width:100%;
@@ -77,9 +78,7 @@ padding:55px;
 
 border-radius:22px;
 
-box-shadow:
-
-0 25px 60px rgba(0,0,0,.08);
+box-shadow:0 25px 60px rgba(0,0,0,.08);
 
 text-align:center;
 
@@ -87,29 +86,50 @@ animation:fade 1s ease;
 
 }
 
+
+
+/* Kim & Cody */
+
 .script{
+
 font-family:"Parisienne", cursive;
+
 font-size:72px;
+
 color:#8C6B7E;
-margin-bottom:5px;
+
+margin-bottom:8px;
+
 line-height:1;
+
 }
 
+
 .script span{
-font-size:48px;
+
+font-size:50px;
+
 }
+
+
+
+/* Find Your Seat */
 
 .title{
 
-font-family:"Le Jour Serif",serif;
+font-family:"Cormorant Garamond", serif;
 
 font-size:48px;
+
+font-weight:600;
 
 letter-spacing:2px;
 
 margin-bottom:10px;
 
 }
+
+
 
 .subtitle{
 
@@ -120,6 +140,8 @@ line-height:1.7;
 margin-bottom:35px;
 
 }
+
+
 
 input{
 
@@ -139,6 +161,8 @@ transition:.25s;
 
 }
 
+
+
 input:focus{
 
 border-color:#8C6B7E;
@@ -146,6 +170,8 @@ border-color:#8C6B7E;
 box-shadow:0 0 0 4px rgba(140,107,126,.12);
 
 }
+
+
 
 .result{
 
@@ -161,6 +187,8 @@ animation:fade .5s;
 
 }
 
+
+
 .welcome{
 
 font-size:22px;
@@ -169,17 +197,23 @@ margin-bottom:10px;
 
 }
 
+
+
 .table{
 
-font-family:"Le Jour Serif",serif;
+font-family:"Cormorant Garamond", serif;
 
 font-size:56px;
+
+font-weight:600;
 
 color:#8C6B7E;
 
 margin:15px 0;
 
 }
+
+
 
 .with{
 
@@ -191,6 +225,8 @@ font-weight:500;
 
 }
 
+
+
 ul{
 
 list-style:none;
@@ -199,11 +235,23 @@ padding:0;
 
 }
 
+
+
 li{
 
 padding:7px;
 
 }
+
+
+
+li:hover{
+
+color:#8C6B7E;
+
+}
+
+
 
 .notfound{
 
@@ -217,6 +265,8 @@ line-height:1.6;
 
 }
 
+
+
 .footer{
 
 margin-top:40px;
@@ -226,6 +276,8 @@ font-size:14px;
 color:#999;
 
 }
+
+
 
 @keyframes fade{
 
@@ -247,6 +299,8 @@ transform:none;
 
 }
 
+
+
 @media(max-width:600px){
 
 .card{
@@ -255,17 +309,20 @@ padding:35px 25px;
 
 }
 
+
 .script{
 
-font-size:38px;
+font-size:55px;
 
 }
+
 
 .title{
 
 font-size:36px;
 
 }
+
 
 .table{
 
@@ -279,42 +336,60 @@ font-size:42px;
 
 </head>
 
+
 <body>
 
 <div class="card">
 
+
 <div class="script">
-Kim
-<span>&</span>
-Cody
+Kim <span>&</span> Cody
 </div>
+
 
 <div class="title">
 Find Your Seat
 </div>
 
+
 <p class="subtitle">
+
 We're so happy you're here!<br>
+
 Search your first name, last name, or full name below.
+
 </p>
+
+
 
 <input
 id="search"
 placeholder="Search your name">
 
+
+
 <div class="result" id="result">
+
 
 <div class="welcome" id="guestName"></div>
 
+
 <div class="table" id="guestTable"></div>
 
+
 <div class="with">
+
 You'll be celebrating with...
+
 </div>
+
 
 <ul id="tableGuests"></ul>
 
+
 </div>
+
+
 
 <div class="notfound" id="notfound">
 
@@ -324,17 +399,20 @@ Please try your first or last name.
 
 </div>
 
+
+
 <div class="footer">
 
-August 23, 2026 
+August 23, 2026
 
 </div>
 
-</div>
 
+</div>
 <script>
 
 const guests = [
+
 {name:"Lorilyn Reyes",table:1},
 {name:"Cerilo Reyes",table:1},
 {name:"Lekisha Duenas",table:1},
@@ -381,7 +459,6 @@ const guests = [
 {name:"Victor Nauta",table:5},
 {name:"Jerome Guavarra",table:5},
 {name:"Novelle Rosello",table:5},
-{name:"Guest",table:5},
 {name:"Calvin Contreras",table:5},
 {name:"Catrina Contreras",table:5},
 {name:"Brei Hays-Castro",table:5},
@@ -458,118 +535,171 @@ const guests = [
 {name:"Trisha Sherry",table:12},
 {name:"Sheryl De Guzman",table:12},
 {name:"Paul Rivera",table:12}
+
 ];
 
+
 const search = document.getElementById("search");
+
 const result = document.getElementById("result");
+
 const notfound = document.getElementById("notfound");
 
 const guestName = document.getElementById("guestName");
+
 const guestTable = document.getElementById("guestTable");
+
 const tableGuests = document.getElementById("tableGuests");
+
+
 
 search.addEventListener("input", () => {
 
-    const value = search.value.toLowerCase().trim();
 
-    result.style.display = "none";
-    notfound.style.display = "none";
-
-    if(value === ""){
-        return;
-    }
-
-    search.addEventListener("input", () => {
-
-    const value = search.value.toLowerCase().trim();
-
-    result.style.display = "none";
-    notfound.style.display = "none";
-
-    if(value === ""){
-        return;
-    }
-
-    const matches = guests.filter(g =>
-        g.name.toLowerCase().includes(value)
-    );
-
-    if(matches.length === 0){
-        notfound.style.display = "block";
-        return;
-    }
+const value = search.value.toLowerCase().trim();
 
 
-    if(matches.length > 1){
+result.style.display = "none";
 
-        guestName.textContent = "We found multiple guests:";
-
-        guestTable.textContent = "";
-
-        tableGuests.innerHTML = "";
-
-        matches.forEach(person => {
-
-            const li = document.createElement("li");
-
-            li.style.cursor = "pointer";
-
-            li.innerHTML = `
-            ♡ ${person.name}
-            `;
-
-            li.onclick = () => showGuest(person);
-
-            tableGuests.appendChild(li);
-
-        });
-
-        result.style.display = "block";
-        return;
-
-    }
+notfound.style.display = "none";
 
 
-    showGuest(matches[0]);
+
+if(value === ""){
+
+return;
+
+}
+
+
+
+const matches = guests.filter(g =>
+
+g.name.toLowerCase().includes(value)
+
+);
+
+
+
+if(matches.length === 0){
+
+notfound.style.display = "block";
+
+return;
+
+}
+
+
+
+if(matches.length > 1){
+
+
+guestName.textContent = "We found multiple guests:";
+
+guestTable.textContent = "";
+
+tableGuests.innerHTML = "";
+
+
+
+matches.forEach(person => {
+
+
+const li = document.createElement("li");
+
+
+li.innerHTML = `♡ ${person.name}`;
+
+
+li.style.cursor = "pointer";
+
+
+li.onclick = () => showGuest(person);
+
+
+
+tableGuests.appendChild(li);
+
+
 
 });
 
 
-function showGuest(guest){
 
-    guestName.textContent = `Welcome, ${guest.name}!`;
-
-    guestTable.textContent = `Table ${guest.table}`;
-
-    tableGuests.innerHTML = "";
-
-    guests
-    .filter(g => g.table === guest.table)
-    .sort((a,b)=>a.name.localeCompare(b.name))
-    .forEach(person => {
-
-        const li = document.createElement("li");
-
-        if(person.name === guest.name){
-
-            li.innerHTML = `● <strong>${person.name}</strong>`;
-
-        } else {
-
-            li.innerHTML = `○ ${person.name}`;
-
-        }
-
-        tableGuests.appendChild(li);
-
-    });
+result.style.display = "block";
 
 
-    result.style.display = "block";
+return;
 
 }
 
+
+
+showGuest(matches[0]);
+
+
+});
+
+
+
+
+function showGuest(guest){
+
+
+guestName.textContent = `Welcome, ${guest.name}!`;
+
+
+guestTable.textContent = `Table ${guest.table}`;
+
+
+tableGuests.innerHTML = "";
+
+
+
+guests
+
+.filter(g => g.table === guest.table)
+
+.sort((a,b)=>a.name.localeCompare(b.name))
+
+.forEach(person => {
+
+
+const li = document.createElement("li");
+
+
+
+if(person.name === guest.name){
+
+li.innerHTML = `● <strong>${person.name}</strong>`;
+
+}
+
+else{
+
+li.innerHTML = `○ ${person.name}`;
+
+}
+
+
+
+tableGuests.appendChild(li);
+
+
+
+});
+
+
+
+result.style.display = "block";
+
+
+}
+
+
 </script>
 
+
 </body>
+
 </html>
