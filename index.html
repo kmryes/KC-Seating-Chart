@@ -88,15 +88,15 @@ animation:fade 1s ease;
 }
 
 .script{
-
-font-family:Eyesome Script,cursive;
-
-font-size:48px;
-
+font-family:"Parisienne", cursive;
+font-size:72px;
 color:#8C6B7E;
+margin-bottom:5px;
+line-height:1;
+}
 
-margin-bottom:8px;
-
+.script span{
+font-size:48px;
 }
 
 .title{
@@ -284,7 +284,9 @@ font-size:42px;
 <div class="card">
 
 <div class="script">
-Kim & Cody
+Kim
+<span>&</span>
+Cody
 </div>
 
 <div class="title">
@@ -438,7 +440,7 @@ const guests = [
 {name:"Galen Cepeda",table:10},
 {name:"Toni Mae Aguon",table:10},
 {name:"Jeff Bonifacio",table:10},
-{name:"Linlyn Ilog",table:10}
+{name:"Linlyn Ilog",table:10},
 
 {name:"Jaythan Lujan",table:11},
 {name:"Jaslynn Petros",table:11},
@@ -477,41 +479,92 @@ search.addEventListener("input", () => {
         return;
     }
 
-    const guest = guests.find(g =>
+    search.addEventListener("input", () => {
+
+    const value = search.value.toLowerCase().trim();
+
+    result.style.display = "none";
+    notfound.style.display = "none";
+
+    if(value === ""){
+        return;
+    }
+
+    const matches = guests.filter(g =>
         g.name.toLowerCase().includes(value)
     );
 
-    if(!guest){
+    if(matches.length === 0){
         notfound.style.display = "block";
         return;
     }
 
-    guestName.textContent = `Welcome, ${guest.name}!`;
-    guestTable.textContent = `Table ${guest.table}`;
 
-    tableGuests.innerHTML = "";
+    if(matches.length > 1){
 
-    guests
-        .filter(g => g.table === guest.table)
-        .sort((a,b)=>a.name.localeCompare(b.name))
-        .forEach(person => {
+        guestName.textContent = "We found multiple guests:";
+
+        guestTable.textContent = "";
+
+        tableGuests.innerHTML = "";
+
+        matches.forEach(person => {
 
             const li = document.createElement("li");
 
-            if(person.name === guest.name){
-                li.innerHTML = `🤍 <strong>${person.name}</strong>`;
-            }else{
-                li.innerHTML = `♡ ${person.name}`;
-            }
+            li.style.cursor = "pointer";
+
+            li.innerHTML = `
+            ♡ ${person.name}
+            `;
+
+            li.onclick = () => showGuest(person);
 
             tableGuests.appendChild(li);
 
         });
 
-    result.style.display = "block";
+        result.style.display = "block";
+        return;
+
+    }
+
+
+    showGuest(matches[0]);
 
 });
-    </script>
 
-</body>
-</html>
+
+function showGuest(guest){
+
+    guestName.textContent = `Welcome, ${guest.name}!`;
+
+    guestTable.textContent = `Table ${guest.table}`;
+
+    tableGuests.innerHTML = "";
+
+    guests
+    .filter(g => g.table === guest.table)
+    .sort((a,b)=>a.name.localeCompare(b.name))
+    .forEach(person => {
+
+        const li = document.createElement("li");
+
+        if(person.name === guest.name){
+
+            li.innerHTML = `● <strong>${person.name}</strong>`;
+
+        } else {
+
+            li.innerHTML = `○ ${person.name}`;
+
+        }
+
+        tableGuests.appendChild(li);
+
+    });
+
+
+    result.style.display = "block";
+
+}
