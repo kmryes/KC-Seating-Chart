@@ -183,7 +183,34 @@ padding-top:30px;
 
 border-top:1px solid #eee;
 
-animation:fade .5s;
+}
+
+
+.result.show{
+
+animation:seatReveal .6s ease;
+
+}
+
+
+
+@keyframes seatReveal{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px) scale(.97);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+}
 
 }
 
@@ -248,6 +275,38 @@ padding:7px;
 li:hover{
 
 color:#8C6B7E;
+
+}
+    #backButton{
+
+margin-top:25px;
+
+padding:12px 25px;
+
+border:none;
+
+border-radius:30px;
+
+background:#8C6B7E;
+
+color:white;
+
+font-family:"Inter", sans-serif;
+
+font-size:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+#backButton:hover{
+
+transform:translateY(-2px);
+
+opacity:.85;
 
 }
 
@@ -386,6 +445,9 @@ You'll be celebrating with...
 
 <ul id="tableGuests"></ul>
 
+<button id="backButton">
+← Search Another Guest
+</button>
 
 </div>
 
@@ -550,6 +612,7 @@ const guestName = document.getElementById("guestName");
 const guestTable = document.getElementById("guestTable");
 
 const tableGuests = document.getElementById("tableGuests");
+const backButton = document.getElementById("backButton");
 
 
 
@@ -626,7 +689,13 @@ tableGuests.appendChild(li);
 
 
 
-result.style.display = "block";
+result.style.display = "block";  
+
+result.classList.remove("show");  
+    
+void result.offsetWidth; 
+
+result.classList.add("show");
 
 
 return;
@@ -691,11 +760,33 @@ tableGuests.appendChild(li);
 
 
 
-result.style.display = "block";
+result.style.display = "block";  
+
+result.classList.remove("show");  
+
+void result.offsetWidth;  
+    
+result.classList.add("show");
 
 
 }
 
+backButton.addEventListener("click", ()=>{
+
+search.value = "";
+
+result.style.display = "none";
+
+notfound.style.display = "none";
+
+search.focus();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
 
 </script>
 
