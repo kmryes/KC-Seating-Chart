@@ -458,7 +458,7 @@ const guests = [
 {name:"Paul Rivera",table:12}
 ];
 
-    const search = document.getElementById("search");
+const search = document.getElementById("search");
 const result = document.getElementById("result");
 const notfound = document.getElementById("notfound");
 
@@ -499,9 +499,9 @@ search.addEventListener("input", () => {
             const li = document.createElement("li");
 
             if(person.name === guest.name){
-                li.innerHTML = `● <strong>${person.name}</strong>`;
+                li.innerHTML = `🤍 <strong>${person.name}</strong>`;
             }else{
-                li.innerHTML = `○ ${person.name}`;
+                li.innerHTML = `♡ ${person.name}`;
             }
 
             tableGuests.appendChild(li);
