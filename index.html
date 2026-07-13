@@ -25,7 +25,7 @@ box-sizing:border-box;
 
 body{
 
-background:#F8F6F3;
+background:#ededed;
 
 font-family:"Playfair Display", serif;
 
@@ -203,27 +203,24 @@ border-top:1px solid #eee;
 
 
 .result.show{
-
-animation:seatReveal .6s ease;
-
+animation:seatReveal .7s cubic-bezier(.22,1,.36,1);
 }
-
 
 @keyframes seatReveal{
 
-from{
-
+0%{
 opacity:0;
-
-transform:translateY(20px) scale(.97);
-
+transform:translateY(25px);
 }
 
-to{
+60%{
+opacity:.8;
+}
 
+100%{
 opacity:1;
-
-transform:translateY(0) scale(1);
+transform:translateY(0);
+}
 
 }
 
@@ -239,15 +236,25 @@ font-family:"Playfair Display", serif;
 
 font-size:26px;
 
-font-weight:500;
+letter-spacing:2px;
 
-letter-spacing:.5px;
+text-transform:uppercase;
 
-margin-bottom:10px;
+color:#444;
 
 }
 
+.divider{
 
+width:70px;
+
+height:1px;
+
+background:#DCCED6;
+
+margin:22px auto;
+
+}
 
 /* TABLE NUMBER */
 
@@ -255,15 +262,15 @@ margin-bottom:10px;
 
 font-family:"Bodoni Moda", serif;
 
-font-size:72px;
+font-size:84px;
+
+letter-spacing:8px;
 
 font-weight:500;
 
-letter-spacing:3px;
-
 color:#8C6B7E;
 
-margin:15px 0;
+margin-bottom:12px;
 
 }
 
@@ -500,29 +507,21 @@ placeholder="Search your name">
 
 <div class="result" id="result">
 
+    <div class="table" id="guestTable"></div>
 
-<div class="welcome" id="guestName"></div>
+    <div class="welcome" id="guestName"></div>
 
+    <div class="divider"></div>
 
-<div class="table" id="guestTable"></div>
+    <div class="with">
+        You'll be celebrating with...
+    </div>
 
+    <ul id="tableGuests"></ul>
 
-<div class="with">
-
-You'll be celebrating with...
-
-</div>
-
-
-<ul id="tableGuests"></ul>
-
-
-<button id="backButton">
-
-← Search Another Guest
-
-</button>
-
+    <button id="backButton">
+        ← Search Another Guest
+    </button>
 
 </div>
 
@@ -787,14 +786,15 @@ tableGuests.appendChild(li);
 
 
 
-result.style.display = "block";
+setTimeout(() => {
 
-result.classList.remove("show");
+    result.style.display = "block";
 
-void result.offsetWidth;
+    result.classList.remove("show");
+    void result.offsetWidth;
+    result.classList.add("show");
 
-result.classList.add("show");
-
+}, 250);
 
 return;
 
